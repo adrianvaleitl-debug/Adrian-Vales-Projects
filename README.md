@@ -4,7 +4,7 @@
 
 A central home for Adrian Vale's software, downloads, project websites, release announcements, release notes and creator links.
 
-## Featured launch: GitMessage 4.0
+## Featured launch: GitMessage v1
 
 **GitMessage is officially released for web and Windows.** It brings real-time direct messaging, searchable conversations, public profiles, clickable bio links, server spaces and text channels, supported image/video sharing, one-to-one voice/video calls, responsive layouts, light/dark themes and automatic stable Windows updates.
 
