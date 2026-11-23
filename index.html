@@ -77,9 +77,8 @@ sections.forEach(section=>observer.observe(section));
    if(!response.ok)return;
    const release=await response.json();
    if(release.draft||release.prerelease||!release.tag_name||!release.html_url)return;
-   const rawTag=String(release.tag_name),version=rawTag.charAt(0).toLowerCase()==='v'?rawTag.slice(1):rawTag;
+   const rawTag=String(release.tag_name);
    const versionNode=card.querySelector('[data-release-version]'),notesNode=card.querySelector('[data-release-notes]'),downloadNode=card.querySelector('[data-release-download]');
-   if(versionNode)versionNode.textContent='VERSION '+version;
    if(notesNode)notesNode.href=release.html_url;
    const assets=Array.isArray(release.assets)?release.assets:[];
    const prefix='/'+repo+'/releases/download/'+encodeURIComponent(rawTag)+'/';
@@ -88,7 +87,13 @@ sections.forEach(section=>observer.observe(section));
     try{const url=new URL(asset.browser_download_url);return url.origin==='https://github.com'&&url.pathname.startsWith(prefix)&&url.pathname.slice(prefix.length)===encodeURIComponent(String(asset.name));}catch{return false}
    });
    installers.sort((a,b)=>Number(String(b.name).toLowerCase().includes('setup'))-Number(String(a.name).toLowerCase().includes('setup')));
-   if(downloadNode){if(installers[0]){downloadNode.href=installers[0].browser_download_url;downloadNode.textContent='DOWNLOAD WINDOWS ↓';}else{downloadNode.href=release.html_url;downloadNode.textContent='VIEW RELEASE & DOWNLOADS ↗';}}
+   const installer=installers[0];
+   const tagVersion=rawTag.match(/^v?(\\d+(?:\\.\\d+){1,2})$/i)?.[1];
+   const assetVersion=installer?.name.match(/(\\d+\\.\\d+(?:\\.\\d+)?)(?=\\.exe$)/i)?.[1];
+   const releaseNameVersion=String(release.name||'').match(/\\b(\\d+\\.\\d+(?:\\.\\d+)?)\\b/)?.[1];
+   const version=tagVersion||assetVersion||releaseNameVersion||rawTag;
+   if(versionNode)versionNode.textContent='VERSION '+version;
+   if(downloadNode){if(installer){downloadNode.href=installer.browser_download_url;downloadNode.textContent='DOWNLOAD WINDOWS ↓';}else{downloadNode.href=release.html_url;downloadNode.textContent='VIEW RELEASE & DOWNLOADS ↗';}}
   }catch{}
  }
  Promise.all(cards.map(syncCard));
