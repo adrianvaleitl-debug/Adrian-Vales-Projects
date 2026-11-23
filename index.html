@@ -131,6 +131,59 @@ html[data-site-theme="royal"] .av-theme-switcher button[aria-pressed=true]{backg
 @media(max-width:600px){.av-theme-switcher{left:10px;bottom:58px;transform:scale(.94);transform-origin:bottom left}}
 </style>
 <style id="authenticity-accessibility-refinement">html{scroll-behavior:smooth}.btn,.modebtn,.swatch,.project-links a,.release a{border-radius:8px}@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}</style>
+
+<style id="adrian-formal-refinement">
+:root{
+ --bg:#f4f0e8!important;--side:#eee8dc!important;--panel:#fbf9f4!important;
+ --panel2:#f0e9dc!important;--ink:#29251f!important;--text:#29251f!important;
+ --muted:#746b5e!important;--line:#ddd3c2!important;--accent:#a7834d!important;
+ --accent-soft:rgba(167,131,77,.11)!important;--accent-ink:#fffaf0!important;
+ --shadow:0 5px 18px rgba(55,43,27,.045)!important;color-scheme:light!important
+}
+html,body{background:var(--bg)!important;color:var(--ink)!important}
+body{font-family:'Manrope',Arial,sans-serif!important;font-size:14px!important;line-height:1.7!important}
+body:before{display:none!important}
+.sidebar{background:var(--side)!important;border-right:1px solid var(--line)!important;backdrop-filter:none!important}
+.brand{border-bottom-color:var(--line)!important}
+.brand strong{color:var(--ink)!important;font-family:'Cormorant Garamond',Georgia,serif!important;font-size:21px!important;letter-spacing:.045em!important}
+.brand small,.side-foot,.crumb,.navlabel{color:var(--muted)!important}
+.navlabel{font-family:'Manrope',sans-serif!important;font-size:9px!important;letter-spacing:.13em!important}
+.nav a{border:1px solid transparent!important;color:var(--muted)!important;background:transparent!important}
+.nav a:hover,.nav a.active{background:#e5dccd!important;border-color:#d8cbb6!important;color:var(--ink)!important}
+.navicon{color:var(--accent)!important}
+.side-card,.hero-card,.download-card,.project-card,.social-card,.about-card,.release,.theme-panel,.card{
+ background:var(--panel)!important;border:1px solid var(--line)!important;
+ border-radius:10px!important;box-shadow:var(--shadow)!important;backdrop-filter:none!important
+}
+.side-card b,.hero-card h2,.page h1,.page h2,.page h3,.about-card h3{color:var(--ink)!important}
+.side-card p,.hero-card p,.lead,.section-note,.project-card p,.about-card p{color:var(--muted)!important}
+.topline{background:rgba(244,240,232,.96)!important;border-bottom:1px solid var(--line)!important;backdrop-filter:none!important}
+.page>.hero{min-height:460px!important;padding-top:65px!important;padding-bottom:48px!important}
+.page h1{font-size:clamp(46px,5.2vw,68px)!important;line-height:1.04!important;letter-spacing:-.035em!important}
+.page h1 span{background:none!important;color:var(--accent)!important}
+.eyebrow,.section-index,.card-label{color:var(--accent)!important}
+.btn,.modebtn,.project-links a,.release a{border-radius:6px!important;box-shadow:none!important;transform:none!important}
+.btn{background:var(--panel)!important;border:1px solid var(--line)!important;color:var(--ink)!important}
+.btn.primary,.project-links .get{background:#a7834d!important;border-color:#a7834d!important;color:#fffaf0!important}
+.btn:hover,.project-links a:hover,.release a:hover{border-color:var(--accent)!important;box-shadow:none!important}
+.hero-card{padding:22px!important}
+.quicklinks a{background:transparent!important;border-color:var(--line)!important;color:var(--ink)!important}
+.projects-wrap{background:#eee8dc!important;border-block-color:var(--line)!important}
+.project-card{min-height:215px!important}
+.project-card h3{color:var(--ink)!important}
+.tag{color:var(--accent)!important;border-color:var(--line)!important;background:#f4f0e8!important}
+.project-card .project-update{border-top-color:var(--line)!important}
+.social-card span,.download-card span:last-child,.project-links a:hover{color:var(--accent)!important}
+.value{background:#f0e9dc!important;border-color:var(--line)!important}
+.footer{border-top-color:var(--line)!important}
+.footer a,.side-card a{color:var(--accent)!important}
+.av-theme-switcher,.av-storage-banner,.av-storage-reopen{display:none!important}
+@media(max-width:700px){
+ .sidebar{background:var(--side)!important}
+ .nav a:hover,.nav a.active{background:#e5dccd!important}
+ .page>.hero{min-height:0!important;padding-top:42px!important}
+}
+</style>
 </head>
 <body><a class="skip-link" href="#home">Skip to main content</a>
 <aside class="sidebar">
