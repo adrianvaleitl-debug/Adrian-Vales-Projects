@@ -22,7 +22,7 @@ A real-time messaging application available on the web and Windows. Features inc
 Calling is currently one-to-one. Group calls are not available.
 
 ### Reverse
-Reverse is an active project in the portfolio. Its public repository is available, with further product details to be published as the project develops.
+Reverse Marketplace is a planned buyer-led marketplace: buyers publish requests with budgets, images and deadlines, then sellers compete by submitting offers. The MVP specification includes buyer/seller accounts, request browsing, offer comparison, messaging, dashboards, seller ratings, reviews and a proposed 5–10% commission on completed transactions. The repository currently documents the specification; the functional application has not yet been implemented.
 
 - [GitHub repository](https://github.com/adrianvaleitl-debug/Reverse)
 
