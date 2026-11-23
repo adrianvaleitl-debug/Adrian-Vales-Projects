@@ -38,7 +38,7 @@
 </section>
 <div class="rule"></div>
 <section class="section" id="gitmessage-launch"><div class="section-head"><div><div class="section-index">LATEST RELEASE / GITMESSAGE</div><h2>Now in the open.</h2></div><p class="section-note">GitMessage is available on web and Windows. One account, connected conversations and a growing set of community features.</p></div>
-<article class="launch"><div class="launch-top"><span>GITMESSAGE · STABLE RELEASE · BUILD 4.0.259</span><span class="tag">AVAILABLE NOW</span></div><h3>Conversation, without the clutter.</h3><p>Real-time messaging across web and Windows. Create an account, customise your profile, chat privately, build communities and make one-to-one calls.</p><p>Direct messages and history · Conversation search · Profiles and bio links · Servers and text channels · Supported image and video sharing · One-to-one voice and video calls · Responsive web and Windows apps · Automatic stable desktop updates.</p><div class="project-links"><a class="get" href="https://github.com/adrianvaleitl-debug/GitMessage/releases/latest" target="_blank" rel="noreferrer">DOWNLOAD WINDOWS ↗</a><a href="https://adrianvaleitl-debug.github.io/GitMessage/" target="_blank" rel="noreferrer">OPEN WEB APP ↗</a><a href="https://github.com/adrianvaleitl-debug/GitMessage" target="_blank" rel="noreferrer">SOURCE CODE ↗</a></div></article></section>
+<article class="launch" data-release-repo="adrianvaleitl-debug/GitMessage"><div class="launch-top"><span>GITMESSAGE · STABLE RELEASE · BUILD <b data-release-build>4.0.510</b></span><span class="tag">AVAILABLE NOW</span></div><h3>Conversation, without the clutter.</h3><p>Real-time messaging across web and Windows. Create an account, customise your profile, chat privately, build communities and make one-to-one calls.</p><p>Direct messages and history · Conversation search · Profiles and bio links · Servers and text channels · Supported image and video sharing · One-to-one voice and video calls · Responsive web and Windows apps · Automatic stable desktop updates.</p><div class="project-links"><a class="get" data-release-download href="https://github.com/adrianvaleitl-debug/GitMessage/releases/download/gitmessage-build-510/GitMessage.v1.Setup.4.0.510.exe" target="_blank" rel="noreferrer">DOWNLOAD WINDOWS ↗</a><a href="https://adrianvaleitl-debug.github.io/GitMessage/" target="_blank" rel="noreferrer">OPEN WEB APP ↗</a><a href="https://github.com/adrianvaleitl-debug/GitMessage" target="_blank" rel="noreferrer">SOURCE CODE ↗</a></div></article></section>
 <section class="section" id="apps"><div class="section-head"><div><div class="section-index">02 / THE PORTFOLIO</div><h2>Selected projects.</h2></div><p class="section-note">Three projects at different stages: a market research desktop tool, a real-time messaging platform and a buyer-led marketplace concept.</p></div>
 <div class="project-grid">
 <article class="project-card" data-release-repo="adrianvaleitl-debug/MarketView"><div class="project-top"><img class="project-mark" src="https://raw.githubusercontent.com/adrianvaleitl-debug/MarketView/main/src-tauri/icons/app-icon.svg" alt="MarketView icon"><span class="tag" data-release-version>VERSION 3.4</span></div><h3>MarketView</h3><p>A market research workspace bringing watchlists, technical scanning, alerts, risk planning and a trading journal into one desktop tool. It helps organise research; it does not place trades.</p><p class="project-update" data-release-summary>Live market prices now follow the selected display currency, with more distinct text-size options.</p><div class="project-links"><a class="get" data-release-download href="https://github.com/adrianvaleitl-debug/MarketView/releases/latest">DOWNLOAD WINDOWS ↓</a><a data-release-notes href="https://github.com/adrianvaleitl-debug/MarketView/releases/latest">RELEASE NOTES ↗</a><a href="https://github.com/adrianvaleitl-debug/MarketView" target="_blank" rel="noreferrer">SOURCE CODE ↗</a></div></article>
@@ -69,7 +69,7 @@ const sections=[...document.querySelectorAll('main section[id]')],navLinks=[...d
 const observer=new IntersectionObserver(entries=>{for(const entry of entries){if(entry.isIntersecting){navLinks.forEach(link=>link.classList.toggle('active',link.getAttribute('href')==='#'+entry.target.id));}}},{rootMargin:'-35% 0px -55% 0px'});
 sections.forEach(section=>observer.observe(section));
 (()=>{
- const cards=[...document.querySelectorAll('.project-card[data-release-repo]')];
+ const cards=[...document.querySelectorAll('.project-card[data-release-repo],.launch[data-release-repo]')];
  async function syncCard(card){
   const repo=card.dataset.releaseRepo;
   try{
@@ -78,7 +78,7 @@ sections.forEach(section=>observer.observe(section));
    const release=await response.json();
    if(release.draft||release.prerelease||!release.tag_name||!release.html_url)return;
    const rawTag=String(release.tag_name);
-   const versionNode=card.querySelector('[data-release-version]'),notesNode=card.querySelector('[data-release-notes]'),downloadNode=card.querySelector('[data-release-download]');
+   const versionNode=card.querySelector('[data-release-version]'),buildNode=card.querySelector('[data-release-build]'),notesNode=card.querySelector('[data-release-notes]'),downloadNode=card.querySelector('[data-release-download]');
    if(notesNode)notesNode.href=release.html_url;
    const assets=Array.isArray(release.assets)?release.assets:[];
    const prefix='/'+repo+'/releases/download/'+encodeURIComponent(rawTag)+'/';
@@ -93,6 +93,7 @@ sections.forEach(section=>observer.observe(section));
    const releaseNameVersion=String(release.name||'').match(/\b(\d+\.\d+(?:\.\d+)?)\b/)?.[1];
    const version=tagVersion||assetVersion||releaseNameVersion||rawTag;
    if(versionNode)versionNode.textContent='VERSION '+version;
+   if(buildNode)buildNode.textContent=version;
    if(downloadNode){if(installer){downloadNode.href=installer.browser_download_url;downloadNode.textContent='DOWNLOAD WINDOWS ↓';}else{downloadNode.href=release.html_url;downloadNode.textContent='VIEW RELEASE & DOWNLOADS ↗';}}
   }catch{}
  }
