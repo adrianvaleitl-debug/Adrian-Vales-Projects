@@ -88,9 +88,9 @@ sections.forEach(section=>observer.observe(section));
    });
    installers.sort((a,b)=>Number(String(b.name).toLowerCase().includes('setup'))-Number(String(a.name).toLowerCase().includes('setup')));
    const installer=installers[0];
-   const tagVersion=rawTag.match(/^v?(\\d+(?:\\.\\d+){1,2})$/i)?.[1];
-   const assetVersion=installer?.name.match(/(\\d+\\.\\d+(?:\\.\\d+)?)(?=\\.exe$)/i)?.[1];
-   const releaseNameVersion=String(release.name||'').match(/\\b(\\d+\\.\\d+(?:\\.\\d+)?)\\b/)?.[1];
+   const tagVersion=rawTag.match(/^v?(\d+(?:\.\d+){1,2})$/i)?.[1];
+   const assetVersion=installer?.name.match(/(\d+\.\d+(?:\.\d+)?)(?=\.exe$)/i)?.[1];
+   const releaseNameVersion=String(release.name||'').match(/\b(\d+\.\d+(?:\.\d+)?)\b/)?.[1];
    const version=tagVersion||assetVersion||releaseNameVersion||rawTag;
    if(versionNode)versionNode.textContent='VERSION '+version;
    if(downloadNode){if(installer){downloadNode.href=installer.browser_download_url;downloadNode.textContent='DOWNLOAD WINDOWS ↓';}else{downloadNode.href=release.html_url;downloadNode.textContent='VIEW RELEASE & DOWNLOADS ↗';}}
